@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W38Y6099QZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { 'analytics_storage': 'denied' });
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W38Y6099QZ"></script>
+  <script>
     gtag('js', new Date());
-
     gtag('config', 'G-W38Y6099QZ');
   </script>
   <meta charset="UTF-8">
@@ -1162,6 +1164,14 @@ footer{ padding-block:44px; }
   }, 9000);
 })();
 </script>
+<div class="cookie-bar" id="cookieBar" hidden>
+  <p data-i18n="cookies.text">Używamy plików cookies do statystyk odwiedzin (Google Analytics).</p>
+  <div class="cookie-bar-actions">
+    <button type="button" class="cookie-decline" id="cookieDecline" data-i18n="cookies.decline">Odrzuć</button>
+    <button type="button" class="cookie-accept" id="cookieAccept" data-i18n="cookies.accept">Akceptuj</button>
+  </div>
+</div>
+
 <script src="i18n.js"></script>
 </body>
 </html>

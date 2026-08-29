@@ -60,7 +60,10 @@
     'galpage.head': {
       pl: '<p class="eyebrow">Galeria</p><h1>Wszystkie zdjęcia apartamentu.</h1>',
       en: '<p class="eyebrow">Gallery</p><h1>All apartment photos.</h1>'
-    }
+    },
+    'cookies.text': { pl: 'Używamy plików cookies do statystyk odwiedzin (Google Analytics).', en: 'We use cookies for visit statistics (Google Analytics).' },
+    'cookies.decline': { pl: 'Odrzuć', en: 'Decline' },
+    'cookies.accept': { pl: 'Akceptuj', en: 'Accept' }
   };
 
   var ATTR = {
@@ -124,6 +127,29 @@
 
   window.SunApartsI18n = { T: T, ATTR: ATTR, applyLang: applyLang };
 
+  function initCookieBar(){
+    var CONSENT_KEY = 'sunapts-cookie-consent';
+    var bar = document.getElementById('cookieBar');
+    if (!bar) return;
+    var accept = document.getElementById('cookieAccept');
+    var decline = document.getElementById('cookieDecline');
+    var saved = null;
+    try { saved = localStorage.getItem(CONSENT_KEY); } catch(e){}
+    if (saved === 'granted' && typeof gtag === 'function'){
+      gtag('consent', 'update', { 'analytics_storage': 'granted' });
+    }
+    if (!saved) bar.hidden = false;
+    function choose(value){
+      bar.hidden = true;
+      try { localStorage.setItem(CONSENT_KEY, value); } catch(e){}
+      if (value === 'granted' && typeof gtag === 'function'){
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
+      }
+    }
+    if (accept) accept.addEventListener('click', function(){ choose('granted'); });
+    if (decline) decline.addEventListener('click', function(){ choose('denied'); });
+  }
+
   function init(){
     document.querySelectorAll('[data-lang-btn]').forEach(function(btn){
       btn.addEventListener('click', function(){ applyLang(btn.getAttribute('data-lang-btn')); });
@@ -131,12 +157,20 @@
     var saved = 'pl';
     try { saved = localStorage.getItem(STORAGE_KEY) || 'pl'; } catch(e){}
     applyLang(saved);
+    initCookieBar();
 
     var style = document.createElement('style');
     style.textContent =
       '.lang-switch{ display:flex; align-items:center; gap:2px; border:1px solid var(--band-line); border-radius:999px; padding:2px; }' +
       '.lang-btn{ appearance:none; border:0; background:transparent; color:var(--band-ink-soft); font:inherit; font-size:0.68rem; font-weight:800; letter-spacing:0.06em; padding:4px 9px; border-radius:999px; cursor:pointer; line-height:1; }' +
-      '.lang-btn.is-active{ background:var(--sun); color:#fff; }';
+      '.lang-btn.is-active{ background:var(--sun); color:#fff; }' +
+      '.cookie-bar{ position:fixed; left:16px; right:16px; bottom:16px; z-index:60; max-width:520px; margin:0 auto; display:flex; align-items:center; gap:14px; flex-wrap:wrap; background:var(--band-bg); color:var(--band-ink-soft); border:1px solid var(--band-line); border-radius:8px; padding:12px 16px; font-size:0.82rem; line-height:1.4; box-shadow:0 12px 30px -12px rgba(0,0,0,0.5); }' +
+      '.cookie-bar[hidden]{ display:none; }' +
+      '.cookie-bar p{ margin:0; flex:1 1 220px; }' +
+      '.cookie-bar-actions{ display:flex; gap:8px; flex:none; }' +
+      '.cookie-bar button{ appearance:none; border:1px solid var(--band-line); background:transparent; color:var(--band-ink-soft); font:inherit; font-size:0.78rem; font-weight:700; padding:7px 14px; border-radius:5px; cursor:pointer; white-space:nowrap; }' +
+      '.cookie-accept{ background:var(--sun) !important; border-color:var(--sun) !important; color:#fff !important; }' +
+      '.cookie-decline:hover{ border-color:var(--band-ink-soft); }';
     document.head.appendChild(style);
   }
 
