@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W38Y6099QZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-W38Y6099QZ');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Pełna galeria zdjęć apartamentu Sun Apartments w Mechelinkach nad Zatoką Pucką: salon, sypialnie, aneks kuchenny, łazienka i taras z widokiem na morze.">
@@ -20,8 +29,8 @@
   --dune:#8C743F;
   --dune-soft:#A98F5A;
   --horizon:#4E7986;
-  --sun:#C85A22;
-  --sun-soft:#E0793C;
+  --sun:#B3491E;
+  --sun-soft:#C96A38;
   --line:rgba(34,58,68,0.14);
   --shadow: 0 20px 50px -30px rgba(27,43,49,0.35);
   --band-bg:#1C2E36;
@@ -42,8 +51,8 @@
     --dune:#E4C588;
     --dune-soft:#D8B980;
     --horizon:#8FC0CB;
-    --sun:#F2925A;
-    --sun-soft:#F2925A;
+    --sun:#DB7A42;
+    --sun-soft:#E89660;
     --line:rgba(241,236,223,0.14);
     --shadow: 0 20px 50px -28px rgba(0,0,0,0.6);
     --band-bg:#0B1519;
@@ -64,8 +73,8 @@
   --dune:#E4C588;
   --dune-soft:#D8B980;
   --horizon:#8FC0CB;
-  --sun:#F2925A;
-  --sun-soft:#F2925A;
+  --sun:#DB7A42;
+  --sun-soft:#E89660;
   --line:rgba(241,236,223,0.14);
   --shadow: 0 20px 50px -28px rgba(0,0,0,0.6);
   --band-bg:#0B1519;
@@ -110,30 +119,37 @@ img,svg{ display:block; max-width:100%; }
 /* ---------- nav ---------- */
 .nav{
   position:sticky; top:0; z-index:40;
-  background:color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);
+  background:var(--band-bg);
+  border-bottom:1px solid var(--band-line);
 }
+.nav-utility{
+  display:flex; align-items:center; justify-content:space-between;
+  padding-block:7px;
+  border-bottom:1px solid var(--band-line);
+}
+.nav-utility .nav-phone{ color:var(--band-ink-soft); font-size:0.78rem; }
+.nav-utility .nav-phone svg{ width:14px; height:14px; }
+.nav-utility .nav-phone:hover{ color:var(--sun); }
 .nav-row{
   display:flex; align-items:center; justify-content:space-between;
-  padding-block:16px;
+  padding-block:14px;
 }
 .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
 .brand-mark{ width:30px; height:30px; flex:none; }
 .brand-name{
   font-family:'Fraunces', serif; font-weight:560; font-size:1.08rem;
-  letter-spacing:0.01em; color:var(--ink);
+  letter-spacing:0.01em; color:var(--band-ink);
 }
-.nav-links{ display:flex; align-items:center; gap:28px; list-style:none; margin:0; padding:0; }
+.nav-links{ display:flex; align-items:center; gap:26px; list-style:none; margin:0; padding:0; }
 .nav-links a{
-  text-decoration:none; font-size:0.86rem; font-weight:600;
-  letter-spacing:0.03em; text-transform:uppercase; color:var(--ink-soft);
+  text-decoration:none; font-size:0.8rem; font-weight:600;
+  letter-spacing:0.08em; text-transform:uppercase; color:var(--band-ink-soft);
   transition:color .2s ease;
 }
 .nav-links a:hover, .nav-links a:focus-visible{ color:var(--sun); }
 .nav-phone{
   display:inline-flex; align-items:center; gap:7px;
-  color:var(--ink-soft); text-decoration:none;
+  color:var(--band-ink-soft); text-decoration:none;
   font-size:0.86rem; font-weight:600;
   transition:color .2s ease;
 }
@@ -148,21 +164,20 @@ img,svg{ display:block; max-width:100%; }
   white-space:nowrap;
 }
 .nav-cta:hover{ background:var(--sun-soft); }
-.menu-btn{ display:none; background:none; border:none; color:var(--ink); padding:6px; cursor:pointer; }
+.menu-btn{ display:none; background:none; border:none; color:var(--band-ink); padding:6px; cursor:pointer; }
 .menu-btn svg{ width:24px; height:24px; }
 
 @media (max-width: 760px){
   .nav-links{
     position:absolute; top:100%; left:0; right:0;
     flex-direction:column; align-items:flex-start; gap:0;
-    background:var(--bg-raised); border-bottom:1px solid var(--line);
+    background:var(--band-bg); border-bottom:1px solid var(--band-line);
     padding:8px clamp(20px,5vw,56px) 18px;
     display:none;
   }
   .nav-links.open{ display:flex; }
-  .nav-links li{ width:100%; padding-block:12px; border-bottom:1px solid var(--line); }
+  .nav-links li{ width:100%; padding-block:12px; border-bottom:1px solid var(--band-line); }
   .menu-btn{ display:inline-flex; }
-  .nav-phone span.long{ display:none; }
   .hero-grid{ grid-template-columns:1fr; }
   .hero-art{ aspect-ratio:16/10; }
   .intro-grid{ grid-template-columns:1fr; }
@@ -177,7 +192,7 @@ img,svg{ display:block; max-width:100%; }
   .btn{ justify-content:center; }
   .facts{ justify-content:space-between; }
   .fact{ flex-direction:column; align-items:flex-start; gap:2px; }
-  .nav-phone{ display:none; }
+  .nav-utility .nav-phone span{ display:none; }
   .brand-name{ font-size:0.98rem; }
   .nav-row{ padding-block:12px; }
   .dist-list li{ flex-direction:column; align-items:flex-start; gap:2px; }
@@ -501,6 +516,16 @@ footer{ padding-block:44px; }
 <body>
 
 <div class="nav">
+  <div class="wrap nav-utility">
+    <a class="nav-phone" href="tel:+48607662361" aria-label="Zadzwoń: 607 662 361" data-i18n-aria="aria.navPhone">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1.1.5 1.1 1.1V20c0 .6-.5 1.1-1.1 1.1C10.4 21.1 2.9 13.6 2.9 4.2 2.9 3.6 3.4 3 4 3h3.3c.6 0 1.1.5 1.1 1.1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span>607 662 361</span>
+    </a>
+    <div class="lang-switch" role="group" aria-label="Zmień język / Change language">
+      <button type="button" class="lang-btn" data-lang-btn="pl" aria-pressed="false">PL</button>
+      <button type="button" class="lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
   <div class="wrap nav-row">
     <a class="brand" href="index.html">
       <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -516,7 +541,7 @@ footer{ padding-block:44px; }
       </svg>
       <span class="brand-name">Sun Apartments</span>
     </a>
-    <ul class="nav-links" id="navLinks">
+    <ul class="nav-links" id="navLinks" data-i18n="nav.links.gallery">
       <li><a href="index.html#apartament">Apartament</a></li>
       <li><a href="index.html#udogodnienia">Udogodnienia</a></li>
       <li><a href="galeria.html">Galeria</a></li>
@@ -524,11 +549,7 @@ footer{ padding-block:44px; }
       <li><a href="index.html#pobyt">Pobyt</a></li>
     </ul>
     <div style="display:flex; align-items:center; gap:10px;">
-      <a class="nav-phone" href="tel:+48607662361" aria-label="Zadzwoń: 607 662 361">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1.1.5 1.1 1.1V20c0 .6-.5 1.1-1.1 1.1C10.4 21.1 2.9 13.6 2.9 4.2 2.9 3.6 3.4 3 4 3h3.3c.6 0 1.1.5 1.1 1.1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        <span class="long">607 662 361</span>
-      </a>
-      <a class="nav-cta" href="https://www.booking.com/hotel/pl/sun-apartaments-mechelinki.pl.html" target="_blank" rel="noopener noreferrer">
+      <a class="nav-cta" href="https://www.booking.com/hotel/pl/sun-apartaments-mechelinki.pl.html" target="_blank" rel="noopener noreferrer" data-i18n="nav.cta">
         Rezerwuj
       </a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
@@ -541,8 +562,8 @@ footer{ padding-block:44px; }
 <main id="top">
   <section class="gallery-page">
     <div class="wrap">
-      <a class="back-link" href="index.html">&larr; Powrót do strony głównej</a>
-      <div class="section-head">
+      <a class="back-link" href="index.html" data-i18n="galpage.back">&larr; Powrót do strony głównej</a>
+      <div class="section-head" data-i18n="galpage.head">
         <p class="eyebrow">Galeria</p>
         <h1>Wszystkie zdjęcia apartamentu.</h1>
       </div>
@@ -570,8 +591,8 @@ footer{ padding-block:44px; }
   </section>
 </main>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Podgląd zdjęcia">
-  <button class="lightbox-close" id="lightboxClose" aria-label="Zamknij podgląd">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Podgląd zdjęcia" data-i18n-aria="aria.lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Zamknij podgląd" data-i18n-aria="aria.lightboxClose">
     <svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
   </button>
   <figure class="lightbox-figure">
@@ -597,7 +618,7 @@ footer{ padding-block:44px; }
         </svg>
         <span class="brand-name">Sun Apartments</span>
       </a>
-      <ul class="foot-links">
+      <ul class="foot-links" data-i18n="footer.links.gallery">
         <li><a href="index.html#apartament">Apartament</a></li>
         <li><a href="galeria.html">Galeria</a></li>
         <li><a href="index.html#okolica">Okolica</a></li>
@@ -616,11 +637,11 @@ footer{ padding-block:44px; }
     var open = links.classList.toggle('open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-  links.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
+  links.addEventListener('click', function(e){
+    if (e.target.closest('a')){
       links.classList.remove('open');
       btn.setAttribute('aria-expanded','false');
-    });
+    }
   });
 })();
 
@@ -671,5 +692,6 @@ footer{ padding-block:44px; }
   });
 })();
 </script>
+<script src="i18n.js"></script>
 </body>
 </html>

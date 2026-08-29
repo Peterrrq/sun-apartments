@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W38Y6099QZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-W38Y6099QZ');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Sun Apartments – przytulny apartament w Mechelinkach, 500 m od plaży nad Zatoką Pucką. Dwie sypialnie, taras i miejsce dla 5 gości.">
@@ -21,8 +30,8 @@
   --dune:#8C743F;
   --dune-soft:#A98F5A;
   --horizon:#4E7986;
-  --sun:#C85A22;
-  --sun-soft:#E0793C;
+  --sun:#B3491E;
+  --sun-soft:#C96A38;
   --line:rgba(34,58,68,0.14);
   --shadow: 0 20px 50px -30px rgba(27,43,49,0.35);
   --band-bg:#1C2E36;
@@ -44,8 +53,8 @@
     --dune:#E4C588;
     --dune-soft:#D8B980;
     --horizon:#8FC0CB;
-    --sun:#F2925A;
-    --sun-soft:#F2925A;
+    --sun:#DB7A42;
+    --sun-soft:#E89660;
     --line:rgba(241,236,223,0.14);
     --shadow: 0 20px 50px -28px rgba(0,0,0,0.6);
     --band-bg:#14272E;
@@ -66,8 +75,8 @@
   --dune:#E4C588;
   --dune-soft:#D8B980;
   --horizon:#8FC0CB;
-  --sun:#F2925A;
-  --sun-soft:#F2925A;
+  --sun:#DB7A42;
+  --sun-soft:#E89660;
   --line:rgba(241,236,223,0.14);
   --shadow: 0 20px 50px -28px rgba(0,0,0,0.6);
   --band-bg:#14272E;
@@ -112,30 +121,37 @@ img,svg{ display:block; max-width:100%; }
 /* ---------- nav ---------- */
 .nav{
   position:sticky; top:0; z-index:40;
-  background:color-mix(in srgb, var(--bg) 88%, transparent);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--line);
+  background:var(--band-bg);
+  border-bottom:1px solid var(--band-line);
 }
+.nav-utility{
+  display:flex; align-items:center; justify-content:space-between;
+  padding-block:7px;
+  border-bottom:1px solid var(--band-line);
+}
+.nav-utility .nav-phone{ color:var(--band-ink-soft); font-size:0.78rem; }
+.nav-utility .nav-phone svg{ width:14px; height:14px; }
+.nav-utility .nav-phone:hover{ color:var(--sun); }
 .nav-row{
   display:flex; align-items:center; justify-content:space-between;
-  padding-block:16px;
+  padding-block:14px;
 }
 .brand{ display:flex; align-items:center; gap:10px; text-decoration:none; }
 .brand-mark{ width:30px; height:30px; flex:none; }
 .brand-name{
   font-family:'Fraunces', serif; font-weight:560; font-size:1.08rem;
-  letter-spacing:0.01em; color:var(--ink);
+  letter-spacing:0.01em; color:var(--band-ink);
 }
-.nav-links{ display:flex; align-items:center; gap:28px; list-style:none; margin:0; padding:0; }
+.nav-links{ display:flex; align-items:center; gap:26px; list-style:none; margin:0; padding:0; }
 .nav-links a{
-  text-decoration:none; font-size:0.86rem; font-weight:600;
-  letter-spacing:0.03em; text-transform:uppercase; color:var(--ink-soft);
+  text-decoration:none; font-size:0.8rem; font-weight:600;
+  letter-spacing:0.08em; text-transform:uppercase; color:var(--band-ink-soft);
   transition:color .2s ease;
 }
 .nav-links a:hover, .nav-links a:focus-visible{ color:var(--sun); }
 .nav-phone{
   display:inline-flex; align-items:center; gap:7px;
-  color:var(--ink-soft); text-decoration:none;
+  color:var(--band-ink-soft); text-decoration:none;
   font-size:0.86rem; font-weight:600;
   transition:color .2s ease;
 }
@@ -150,21 +166,20 @@ img,svg{ display:block; max-width:100%; }
   white-space:nowrap;
 }
 .nav-cta:hover{ background:var(--sun-soft); }
-.menu-btn{ display:none; background:none; border:none; color:var(--ink); padding:6px; cursor:pointer; }
+.menu-btn{ display:none; background:none; border:none; color:var(--band-ink); padding:6px; cursor:pointer; }
 .menu-btn svg{ width:24px; height:24px; }
 
 @media (max-width: 760px){
   .nav-links{
     position:absolute; top:100%; left:0; right:0;
     flex-direction:column; align-items:flex-start; gap:0;
-    background:var(--bg-raised); border-bottom:1px solid var(--line);
+    background:var(--band-bg); border-bottom:1px solid var(--band-line);
     padding:8px clamp(20px,5vw,56px) 18px;
     display:none;
   }
   .nav-links.open{ display:flex; }
-  .nav-links li{ width:100%; padding-block:12px; border-bottom:1px solid var(--line); }
+  .nav-links li{ width:100%; padding-block:12px; border-bottom:1px solid var(--band-line); }
   .menu-btn{ display:inline-flex; }
-  .nav-phone span.long{ display:none; }
   .hero-grid{ grid-template-columns:1fr; }
   .hero-art{ aspect-ratio:16/10; }
   .intro-grid{ grid-template-columns:1fr; }
@@ -185,7 +200,7 @@ img,svg{ display:block; max-width:100%; }
   .btn{ justify-content:center; }
   .facts{ justify-content:space-between; }
   .fact{ flex-direction:column; align-items:flex-start; gap:2px; }
-  .nav-phone{ display:none; }
+  .nav-utility .nav-phone span{ display:none; }
   .brand-name{ font-size:0.98rem; }
   .nav-row{ padding-block:12px; }
   .dist-list li{ flex-direction:column; align-items:flex-start; gap:2px; }
@@ -201,23 +216,23 @@ img,svg{ display:block; max-width:100%; }
   overflow:hidden;
 }
 .hero-grid{
-  display:grid; grid-template-columns:1.05fr 0.95fr; gap:clamp(24px,4vw,64px);
-  align-items:center; padding-bottom:clamp(48px,7vw,88px);
+  display:grid; grid-template-columns:0.95fr 1.25fr; gap:clamp(32px,5.5vw,88px);
+  align-items:center; padding-bottom:clamp(64px,9vw,120px);
 }
 .eyebrow{
-  font-family:'Manrope',sans-serif; font-size:0.82rem; font-weight:700;
-  letter-spacing:0.14em; text-transform:uppercase; color:var(--dune);
-  display:flex; align-items:center; gap:10px;
+  font-family:'Manrope',sans-serif; font-size:0.84rem; font-weight:700;
+  letter-spacing:0.2em; text-transform:uppercase; color:var(--dune-soft);
+  display:flex; align-items:center; gap:12px;
 }
-.eyebrow::before{ content:""; width:26px; height:1px; background:var(--dune); }
+.eyebrow::before{ content:""; width:36px; height:1px; background:var(--dune-soft); }
 .hero h1{
-  font-size:clamp(2.4rem, 4.6vw, 3.7rem);
-  line-height:1.06; letter-spacing:-0.01em;
-  margin-top:18px;
+  font-size:clamp(3.1rem, 6.5vw, 5.4rem);
+  line-height:1.02; letter-spacing:-0.015em;
+  margin-top:22px;
 }
-.hero h1 em{ font-style:italic; color:var(--sun); }
+.hero h1 em{ font-style:italic; color:var(--dune-soft); }
 .hero-sub{
-  margin-top:20px; max-width:46ch; font-size:1.08rem; color:var(--ink-soft);
+  margin-top:22px; max-width:48ch; font-size:1.1rem; line-height:1.65; color:var(--ink-soft);
 }
 .hero-ctas{ display:flex; flex-wrap:wrap; gap:14px; margin-top:32px; }
 .btn{
@@ -249,11 +264,12 @@ img,svg{ display:block; max-width:100%; }
 .fact strong{ font-family:'Fraunces',serif; font-size:1.3rem; font-weight:560; color:var(--bay); }
 .fact span{ font-size:0.84rem; color:var(--ink-soft); }
 
-.hero-art{ position:relative; aspect-ratio:4/3.1; }
+.hero-art{ position:relative; aspect-ratio:1/1.08; }
 .hero-photo{
-  position:absolute; inset:0; border-radius:8px; overflow:hidden;
+  position:absolute; inset:0;
+  border-radius:4px;
+  overflow:hidden;
   background-color:var(--panel);
-  box-shadow:var(--shadow); border:1px solid var(--line);
 }
 .hero-slide{
   position:absolute; inset:0; background-size:cover; background-position:center;
@@ -277,10 +293,10 @@ img,svg{ display:block; max-width:100%; }
 @keyframes drift{ 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(10px); } }
 
 /* ---------- section shells ---------- */
-section{ padding-block:clamp(56px, 8vw, 108px); }
-.section-head{ max-width:60ch; margin-bottom:clamp(28px,4vw,48px); }
-.section-head .eyebrow{ margin-bottom:14px; }
-.section-head h2{ font-size:clamp(1.7rem, 3vw, 2.3rem); }
+section{ padding-block:clamp(96px, 11vw, 180px); }
+.section-head{ max-width:60ch; margin-bottom:clamp(48px,6vw,88px); }
+.section-head .eyebrow{ margin-bottom:18px; }
+.section-head h2{ font-size:clamp(2.1rem, 4vw, 3.1rem); line-height:1.12; }
 
 
 /* ---------- intro / pull quote ---------- */
@@ -290,19 +306,19 @@ section{ padding-block:clamp(56px, 8vw, 108px); }
   font-family:'Fraunces',serif; font-style:italic; font-weight:460;
   font-size:clamp(1.4rem,2.4vw,1.9rem); line-height:1.35; color:var(--bay);
 }
-.intro-body p + p{ margin-top:16px; }
-.intro-body{ color:var(--ink-soft); font-size:1.02rem; }
+.intro-body p + p{ margin-top:18px; }
+.intro-body{ color:var(--ink-soft); font-size:1.04rem; line-height:1.7; }
 .intro-body strong{ color:var(--ink); font-weight:700; }
 
 /* ---------- layout / plan ---------- */
 .plan-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); }
-.plan-item{ background:var(--bg); padding:26px 22px; display:flex; flex-direction:column; gap:14px; }
+.plan-item{ background:var(--bg); padding:32px 28px; display:flex; flex-direction:column; gap:16px; }
 .plan-item svg{ width:26px; height:26px; color:var(--dune); }
 .plan-item h3{ font-size:1.05rem; font-weight:600; font-family:'Manrope',sans-serif; }
 .plan-item p{ font-size:0.9rem; color:var(--ink-soft); }
 
 /* ---------- amenities ---------- */
-.amenity-groups{ display:grid; gap:36px; }
+.amenity-groups{ display:grid; gap:48px; }
 .amenity-group h3{
   font-family:'Manrope',sans-serif; font-size:0.82rem; font-weight:700;
   letter-spacing:0.1em; text-transform:uppercase; color:var(--horizon); margin-bottom:14px;
@@ -317,7 +333,7 @@ section{ padding-block:clamp(56px, 8vw, 108px); }
 .tag svg{ width:15px; height:15px; color:var(--dune); flex:none; }
 
 /* ---------- gallery ---------- */
-.gallery{ display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:170px; gap:14px; }
+.gallery{ display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:264px; gap:18px; }
 .g-item{
   position:relative; border-radius:3px; overflow:hidden; border:1px solid var(--line);
   display:flex; align-items:flex-end; padding:16px;
@@ -385,12 +401,19 @@ section{ padding-block:clamp(56px, 8vw, 108px); }
 .lightbox-close svg{ width:18px; height:18px; }
 
 @media (max-width:820px){
-  .gallery{ grid-template-columns:repeat(2,1fr); grid-auto-rows:150px; }
+  .gallery{ grid-template-columns:repeat(2,1fr); grid-auto-rows:180px; }
   .g1{ grid-column:span 2; grid-row:span 1; }
   .g2,.g3,.g4,.g5,.g6{ grid-column:span 1; }
 }
 
 .gallery-cta{ margin-top:24px; text-align:center; }
+.gallery-header{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+.gallery-header .section-head{ margin-bottom:0; }
+.gallery-header .gallery-cta{ margin-top:0; }
+@media (max-width:640px){
+  .gallery-header{ align-items:flex-start; }
+  .gallery-header .gallery-cta .btn{ width:100%; justify-content:center; }
+}
 @keyframes gallery-shake{
   0%,100%{ transform:translateX(0); }
   20%{ transform:translateX(-6px); }
@@ -475,10 +498,7 @@ section{ padding-block:clamp(56px, 8vw, 108px); }
 .book h2, .book .eyebrow{ color:var(--band-ink); }
 .book .eyebrow::before{ background:var(--sun-soft); }
 .book-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:clamp(32px,5vw,72px); align-items:center; }
-.price-row{ display:flex; align-items:baseline; gap:10px; margin-top:6px; }
-.price{ font-family:'Fraunces',serif; font-size:clamp(2.6rem,5vw,3.6rem); font-weight:560; color:var(--sun-soft); }
-.price-unit{ font-size:1rem; color:var(--band-ink-soft); }
-.book-terms{ list-style:none; margin:26px 0 0; padding:0; display:grid; gap:12px; }
+.book-terms{ list-style:none; margin:6px 0 0; padding:0; display:grid; gap:12px; }
 .book-terms li{ display:flex; gap:12px; align-items:flex-start; font-size:0.96rem; color:var(--band-ink); }
 .book-terms svg{ width:18px; height:18px; flex:none; margin-top:2px; color:var(--sun-soft); }
 .book-card{
@@ -611,16 +631,55 @@ footer{ padding-block:44px; }
   .floating-book{ transition:opacity .01s linear; }
   .floating-book.is-visible{ animation:none; }
 }
+
+/* ---------- photo strip ---------- */
+.photo-strip{ padding-block:clamp(36px,6vw,60px) clamp(64px,8vw,96px); overflow:visible; }
+.photo-strip-row{
+  display:flex; align-items:flex-start;
+  gap:clamp(22px,3.5vw,40px);
+  max-width:1180px; margin:0 auto;
+  padding-inline:clamp(20px, 5vw, 56px);
+}
+.ps-item{ position:relative; flex:1 1 0; min-width:0; }
+.ps-item:nth-child(1){ margin-top:0; }
+.ps-item:nth-child(2){ margin-top:clamp(26px,5vw,52px); }
+.ps-item:nth-child(3){ margin-top:clamp(-18px,-2vw,-10px); }
+.ps-item::before{
+  content:""; position:absolute; border:1.5px solid var(--dune-soft); z-index:0; pointer-events:none;
+}
+.ps-item:nth-child(odd)::before{ top:-14px; left:-14px; right:14px; bottom:14px; }
+.ps-item:nth-child(even)::before{ top:14px; right:-14px; left:14px; bottom:-14px; }
+.ps-photo{ position:relative; z-index:1; overflow:hidden; height:clamp(300px,36vw,480px); box-shadow:var(--shadow); }
+.ps-photo img{
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform .6s ease;
+}
+.ps-item:hover .ps-photo img{ transform:scale(1.04); }
+@media (max-width:760px){
+  .photo-strip-row{ flex-direction:column; gap:32px; }
+  .ps-item{ margin-top:0 !important; }
+  .ps-photo{ height:240px; }
+}
 </style>
 </head>
 <body>
 
-<a class="floating-book" id="floatingBook" href="https://www.booking.com/hotel/pl/sun-apartaments-mechelinki.pl.html" target="_blank" rel="noopener noreferrer">
+<a class="floating-book" id="floatingBook" href="https://www.booking.com/hotel/pl/sun-apartaments-mechelinki.pl.html" target="_blank" rel="noopener noreferrer" data-i18n="cta.floatingBook">
   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 9.5h17M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8.5 14.2l2 2 4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
   Rezerwuj
 </a>
 
 <div class="nav">
+  <div class="wrap nav-utility">
+    <a class="nav-phone" href="tel:+48607662361" aria-label="Zadzwoń: 607 662 361" data-i18n-aria="aria.navPhone">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1.1.5 1.1 1.1V20c0 .6-.5 1.1-1.1 1.1C10.4 21.1 2.9 13.6 2.9 4.2 2.9 3.6 3.4 3 4 3h3.3c.6 0 1.1.5 1.1 1.1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <span>607 662 361</span>
+    </a>
+    <div class="lang-switch" role="group" aria-label="Zmień język / Change language">
+      <button type="button" class="lang-btn" data-lang-btn="pl" aria-pressed="false">PL</button>
+      <button type="button" class="lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
   <div class="wrap nav-row">
     <a class="brand" href="#top">
       <svg class="brand-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -636,7 +695,7 @@ footer{ padding-block:44px; }
       </svg>
       <span class="brand-name">Sun Apartments</span>
     </a>
-    <ul class="nav-links" id="navLinks">
+    <ul class="nav-links" id="navLinks" data-i18n="nav.links">
       <li><a href="#apartament">Apartament</a></li>
       <li><a href="#udogodnienia">Udogodnienia</a></li>
       <li><a href="#galeria">Galeria</a></li>
@@ -644,11 +703,7 @@ footer{ padding-block:44px; }
       <li><a href="#pobyt">Pobyt</a></li>
     </ul>
     <div style="display:flex; align-items:center; gap:10px;">
-      <a class="nav-phone" href="tel:+48607662361" aria-label="Zadzwoń: 607 662 361">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1.1.5 1.1 1.1V20c0 .6-.5 1.1-1.1 1.1C10.4 21.1 2.9 13.6 2.9 4.2 2.9 3.6 3.4 3 4 3h3.3c.6 0 1.1.5 1.1 1.1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-        <span class="long">607 662 361</span>
-      </a>
-      <a class="nav-cta" href="https://www.booking.com/hotel/pl/sun-apartaments-mechelinki.pl.html" target="_blank" rel="noopener noreferrer">
+      <a class="nav-cta" href="https://www.booking.com/hotel/pl/sun-apartaments-mechelinki.pl.html" target="_blank" rel="noopener noreferrer" data-i18n="nav.cta">
         Rezerwuj
       </a>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
@@ -662,7 +717,7 @@ footer{ padding-block:44px; }
 
   <section class="hero">
     <div class="wrap hero-grid">
-      <div>
+      <div data-i18n="hero.content">
         <p class="eyebrow">Mechelinki · Zatoka Pucka</p>
         <h1>Poranki w Mechelinkach zaczynają się na <em>twoim tarasie</em>.</h1>
         <p class="hero-sub">Przytulny apartament 500 m od piaszczystej plaży, tuż przy Zatoce Puckiej. Dla rodzin i grup przyjaciół szukających spokoju blisko morza — i blisko Trójmiasta.</p>
@@ -707,8 +762,16 @@ footer{ padding-block:44px; }
     </div>
   </section>
 
+  <section class="photo-strip">
+    <div class="photo-strip-row">
+      <div class="ps-item"><div class="ps-photo"><img src="img/01.jpg" alt="Wejście do Sun Apartments" loading="lazy" data-i18n-alt="alt.entrance"></div></div>
+      <div class="ps-item"><div class="ps-photo"><img src="img/10.jpg" alt="Salon z aneksem kuchennym" loading="lazy" data-i18n-alt="alt.living"></div></div>
+      <div class="ps-item"><div class="ps-photo"><img src="img/08.jpg" alt="Słoneczna sypialnia" loading="lazy" data-i18n-alt="alt.bedroom"></div></div>
+    </div>
+  </section>
+
   <section class="intro" id="apartament">
-    <div class="wrap intro-grid">
+    <div class="wrap intro-grid" data-i18n="intro.content">
       <p class="pull">„Przestronny salon z aneksem kuchennym, dwie sypialnie na piętrze i taras tuż przy Zatoce Puckiej.”</p>
       <div class="intro-body">
         <p>Apartament znajduje się na parterze i piętrze budynku — sypialnie na piętrze, żeby dzień zaczynał się od widoku, a noc kończyła w spokoju. Na dole: przestronny salon z aneksem kuchennym i wyjściem na taras. Do dyspozycji gości <strong>2 sypialnie</strong>, łazienka oraz dodatkowe miejsce do spania na rozkładanej sofie w salonie — łącznie dla <strong>maksymalnie 5 osób</strong>.</p>
@@ -719,7 +782,7 @@ footer{ padding-block:44px; }
   </section>
 
   <section id="rozklad">
-    <div class="wrap">
+    <div class="wrap" data-i18n="rozklad.content">
       <div class="section-head">
         <p class="eyebrow">Rozkład</p>
         <h2>Dwie kondygnacje, przemyślany układ.</h2>
@@ -749,8 +812,16 @@ footer{ padding-block:44px; }
     </div>
   </section>
 
+  <section class="photo-strip">
+    <div class="photo-strip-row">
+      <div class="ps-item"><div class="ps-photo"><img src="img/14.jpg" alt="Taras w słoneczny dzień" loading="lazy" data-i18n-alt="alt.terrace"></div></div>
+      <div class="ps-item"><div class="ps-photo"><img src="img/04.jpg" alt="Ogród przy apartamencie" loading="lazy" data-i18n-alt="alt.garden"></div></div>
+      <div class="ps-item"><div class="ps-photo"><img src="img/17.jpg" alt="Sun Apartments wieczorem" loading="lazy" data-i18n-alt="alt.evening"></div></div>
+    </div>
+  </section>
+
   <section id="udogodnienia">
-    <div class="wrap">
+    <div class="wrap" data-i18n="udogod.content">
       <div class="section-head">
         <p class="eyebrow">Udogodnienia</p>
         <h2>Wszystko na miejscu, bez niespodzianek.</h2>
@@ -791,42 +862,10 @@ footer{ padding-block:44px; }
   </section>
 
   <section id="galeria">
-    <div class="wrap">
+    <div class="wrap gallery-header" data-i18n="galeria.content">
       <div class="section-head">
         <p class="eyebrow">Galeria</p>
         <h2>Nastrój apartamentu.</h2>
-      </div>
-      <div class="gallery">
-        <!-- TODO: podmień na prawdziwe zdjęcie -->
-        <div class="g-item g1" role="button" tabindex="0" aria-label="Powiększ zdjęcie: Salon">
-          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.3-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-          <span>Salon</span>
-        </div>
-        <!-- TODO: podmień na prawdziwe zdjęcie -->
-        <div class="g-item g2" role="button" tabindex="0" aria-label="Powiększ zdjęcie: Aneks kuchenny">
-          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.3-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-          <span>Aneks kuchenny</span>
-        </div>
-        <!-- TODO: podmień na prawdziwe zdjęcie -->
-        <div class="g-item g3" role="button" tabindex="0" aria-label="Powiększ zdjęcie: Sypialnia 1">
-          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.3-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-          <span>Sypialnia 1</span>
-        </div>
-        <!-- TODO: podmień na prawdziwe zdjęcie -->
-        <div class="g-item g4" role="button" tabindex="0" aria-label="Powiększ zdjęcie: Łazienka">
-          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.3-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-          <span>Łazienka</span>
-        </div>
-        <!-- TODO: podmień na prawdziwe zdjęcie -->
-        <div class="g-item g5" role="button" tabindex="0" aria-label="Powiększ zdjęcie: Taras">
-          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.3-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-          <span>Taras</span>
-        </div>
-        <!-- TODO: podmień na prawdziwe zdjęcie -->
-        <div class="g-item g6" role="button" tabindex="0" aria-label="Powiększ zdjęcie: Sypialnia 2">
-          <span class="zoom-hint"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="M20 20l-4.3-4.3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-          <span>Sypialnia 2</span>
-        </div>
       </div>
       <div class="gallery-cta" id="galleryCta">
         <a class="btn btn-ghost" id="moreGalleryBtn" href="galeria.html">Zobacz wszystkie zdjęcia →</a>
@@ -834,8 +873,8 @@ footer{ padding-block:44px; }
     </div>
   </section>
 
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Podgląd zdjęcia">
-    <button class="lightbox-close" id="lightboxClose" aria-label="Zamknij podgląd">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Podgląd zdjęcia" data-i18n-aria="aria.lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Zamknij podgląd" data-i18n-aria="aria.lightboxClose">
       <svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
     </button>
     <figure class="lightbox-figure">
@@ -845,7 +884,7 @@ footer{ padding-block:44px; }
   </div>
 
   <section class="loc" id="okolica">
-    <div class="wrap loc-grid">
+    <div class="wrap loc-grid" data-i18n="loc.content">
       <div class="loc-intro">
         <p class="eyebrow">Lokalizacja</p>
         <h2>Mechelinki, tuż nad Zatoką Pucką.</h2>
@@ -892,7 +931,7 @@ footer{ padding-block:44px; }
 
   <section class="reviews" id="opinie">
     <div class="wrap">
-      <div class="review-card">
+      <div class="review-card" data-i18n="reviews.content">
         <p class="review-rating"><strong>5,0</strong> na Google &middot; 4 opinie</p>
         <div class="review-slides">
           <div class="review-slide is-active">
@@ -937,14 +976,10 @@ footer{ padding-block:44px; }
   </section>
 
   <section class="book" id="pobyt">
-    <div class="wrap book-grid">
+    <div class="wrap book-grid" data-i18n="book.content">
       <div>
         <p class="eyebrow">Pobyt</p>
         <h2>Zarezerwuj termin nad zatoką.</h2>
-        <div class="price-row">
-          <span class="price">600 zł</span>
-          <span class="price-unit">/ doba</span>
-        </div>
         <ul class="book-terms">
           <li><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Minimalny pobyt: 3 noce</li>
           <li><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M2 21c0-4 3-6 7-6s7 2 7 6M16 4a3 3 0 0 1 0 6M22 21c0-3-2-5-4-5.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Maksymalnie 5 gości</li>
@@ -953,7 +988,7 @@ footer{ padding-block:44px; }
         </ul>
       </div>
       <div class="book-card">
-        <p class="lead">Sprawdź wolne terminy i zarezerwuj online.</p>
+        <p class="lead">Ceny zależą od terminu — sprawdź aktualną cenę i wolne terminy na Booking.com.</p>
         <a class="btn btn-primary" href="https://www.booking.com/hotel/pl/sun-apartaments-mechelinki.pl.html" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 9.5h17M8 3v3M16 3v3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M8.5 14.2l2 2 4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Rezerwuj na Booking.com
@@ -984,7 +1019,7 @@ footer{ padding-block:44px; }
         </svg>
         <span class="brand-name">Sun Apartments</span>
       </a>
-      <ul class="foot-links">
+      <ul class="foot-links" data-i18n="footer.links">
         <li><a href="#apartament">Apartament</a></li>
         <li><a href="#galeria">Galeria</a></li>
         <li><a href="#okolica">Okolica</a></li>
@@ -1003,11 +1038,11 @@ footer{ padding-block:44px; }
     var open = links.classList.toggle('open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
-  links.querySelectorAll('a').forEach(function(a){
-    a.addEventListener('click', function(){
+  links.addEventListener('click', function(e){
+    if (e.target.closest('a')){
       links.classList.remove('open');
       btn.setAttribute('aria-expanded','false');
-    });
+    }
   });
 })();
 
@@ -1046,14 +1081,14 @@ footer{ padding-block:44px; }
     if(lastFocused){ lastFocused.focus(); }
   }
 
-  document.querySelectorAll('.g-item').forEach(function(item){
-    item.addEventListener('click', function(){ openLightbox(item); });
-    item.addEventListener('keydown', function(e){
-      if(e.key === 'Enter' || e.key === ' '){
-        e.preventDefault();
-        openLightbox(item);
-      }
-    });
+  document.addEventListener('click', function(e){
+    var item = e.target.closest('.g-item');
+    if (item) openLightbox(item);
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var item = e.target.closest('.g-item');
+    if (item){ e.preventDefault(); openLightbox(item); }
   });
 
   closeBtn.addEventListener('click', closeLightbox);
@@ -1066,38 +1101,17 @@ footer{ padding-block:44px; }
 })();
 
 (function(){
-  var triggers = document.querySelectorAll('a[href="#galeria"]');
-  var cta = document.getElementById('galleryCta');
-  if(!cta || !triggers.length) return;
-  triggers.forEach(function(a){
-    a.addEventListener('click', function(){
-      setTimeout(function(){
-        var btn = cta.querySelector('.btn');
-        btn.classList.remove('attn');
-        void btn.offsetWidth;
-        btn.classList.add('attn');
-      }, 700);
-    });
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('a[href="#galeria"]')) return;
+    var cta = document.getElementById('galleryCta');
+    if (!cta) return;
+    setTimeout(function(){
+      var btn = cta.querySelector('.btn');
+      btn.classList.remove('attn');
+      void btn.offsetWidth;
+      btn.classList.add('attn');
+    }, 700);
   });
-})();
-
-(function(){
-  var targets = document.querySelectorAll('.section-head, .pull, .plan-item, .tag, .g-item, .loc-intro, .map-col, .review-card, .book-grid > div');
-  if (!targets.length) return;
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if (!('IntersectionObserver' in window)){
-    targets.forEach(function(el){ el.classList.add('in-view'); });
-    return;
-  }
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (entry.isIntersecting){
-        entry.target.classList.add('in-view');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-  targets.forEach(function(el){ observer.observe(el); });
 })();
 
 (function(){
@@ -1137,16 +1151,17 @@ footer{ padding-block:44px; }
 })();
 
 (function(){
-  var slides = document.querySelectorAll('.review-slides .review-slide');
-  if (slides.length < 2) return;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var current = 0;
   setInterval(function(){
+    var slides = document.querySelectorAll('.review-slides .review-slide');
+    if (slides.length < 2) return;
+    var current = 0;
+    slides.forEach(function(s, i){ if (s.classList.contains('is-active')) current = i; });
     slides[current].classList.remove('is-active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('is-active');
+    slides[(current + 1) % slides.length].classList.add('is-active');
   }, 9000);
 })();
 </script>
+<script src="i18n.js"></script>
 </body>
 </html>
