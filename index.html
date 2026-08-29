@@ -408,26 +408,6 @@ section{ padding-block:clamp(96px, 11vw, 180px); }
   .g2,.g3,.g4,.g5,.g6{ grid-column:span 1; }
 }
 
-.gallery-cta{ margin-top:24px; text-align:center; }
-.gallery-header{ display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; }
-.gallery-header .section-head{ margin-bottom:0; }
-.gallery-header .gallery-cta{ margin-top:0; }
-@media (max-width:640px){
-  .gallery-header{ align-items:flex-start; }
-  .gallery-header .gallery-cta .btn{ width:100%; justify-content:center; }
-}
-@keyframes gallery-shake{
-  0%,100%{ transform:translateX(0); }
-  20%{ transform:translateX(-6px); }
-  40%{ transform:translateX(6px); }
-  60%{ transform:translateX(-4px); }
-  80%{ transform:translateX(4px); }
-}
-.gallery-cta .btn.attn{
-  animation:gallery-shake .5s ease;
-  box-shadow:0 0 0 6px rgba(200,90,34,0.25);
-}
-
 /* ---------- location ---------- */
 .loc{ background:var(--bg-raised); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 .loc-grid{ display:flex; flex-direction:column; gap:clamp(32px,5vw,48px); }
@@ -700,7 +680,7 @@ footer{ padding-block:44px; }
     <ul class="nav-links" id="navLinks" data-i18n="nav.links">
       <li><a href="#apartament">Apartament</a></li>
       <li><a href="#udogodnienia">Udogodnienia</a></li>
-      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="galeria.html">Galeria</a></li>
       <li><a href="#okolica">Okolica</a></li>
       <li><a href="#pobyt">Pobyt</a></li>
     </ul>
@@ -731,6 +711,10 @@ footer{ padding-block:44px; }
           <a class="btn btn-ghost" href="tel:+48607662361">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1.1.5 1.1 1.1V20c0 .6-.5 1.1-1.1 1.1C10.4 21.1 2.9 13.6 2.9 4.2 2.9 3.6 3.4 3 4 3h3.3c.6 0 1.1.5 1.1 1.1 0 1.2.2 2.4.6 3.5.1.3 0 .7-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
             607 662 361
+          </a>
+          <a class="btn btn-ghost" href="galeria.html">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.5" stroke="currentColor" stroke-width="1.6"/><path d="M21 15l-5-5-4 4-3-3-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Zobacz wszystkie zdjęcia
           </a>
         </div>
         <div class="facts">
@@ -859,18 +843,6 @@ footer{ padding-block:44px; }
             <span class="tag"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Czynne cały rok</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="galeria">
-    <div class="wrap gallery-header" data-i18n="galeria.content">
-      <div class="section-head">
-        <p class="eyebrow">Galeria</p>
-        <h2>Nastrój apartamentu.</h2>
-      </div>
-      <div class="gallery-cta" id="galleryCta">
-        <a class="btn btn-ghost" id="moreGalleryBtn" href="galeria.html">Zobacz wszystkie zdjęcia →</a>
       </div>
     </div>
   </section>
@@ -1023,7 +995,7 @@ footer{ padding-block:44px; }
       </a>
       <ul class="foot-links" data-i18n="footer.links">
         <li><a href="#apartament">Apartament</a></li>
-        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
         <li><a href="#okolica">Okolica</a></li>
         <li><a href="tel:+48607662361">607 662 361</a></li>
       </ul>
@@ -1099,20 +1071,6 @@ footer{ padding-block:44px; }
   });
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && lightbox.classList.contains('open')){ closeLightbox(); }
-  });
-})();
-
-(function(){
-  document.addEventListener('click', function(e){
-    if (!e.target.closest('a[href="#galeria"]')) return;
-    var cta = document.getElementById('galleryCta');
-    if (!cta) return;
-    setTimeout(function(){
-      var btn = cta.querySelector('.btn');
-      btn.classList.remove('attn');
-      void btn.offsetWidth;
-      btn.classList.add('attn');
-    }, 700);
   });
 })();
 
